@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "363906983858",
+    "firebase_url": "https://patientvisit-46171.firebaseio.com",
+    "project_id": "patientvisit-46171",
+    "storage_bucket": "patientvisit-46171.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363906983858:android:9e9ce78c443dae9201e6ab",
+        "android_client_info": {
+          "package_name": "com.example.patientvisit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363906983858-blj26pd1maqoge74dltju2m09p8k13lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZoJdqk9zkJ49vC6Cc8_OA8lWUj58jx38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363906983858-blj26pd1maqoge74dltju2m09p8k13lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
