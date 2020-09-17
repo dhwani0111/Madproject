@@ -1,7 +1,8 @@
 package com.example.patientvisit;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,70 +11,61 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-
-public class addVisit extends AppCompatActivity {
-    public static final Pattern PHONE=
-            Pattern.compile(
-                    "(\\+[0-9]+[\\- \\.]*)?"
-                            + "(\\([0-9]+\\)+[\\- \\.]*)?"
-                            + "([0-9][0-9\\- \\.]+[0-9])");
-
+public class Updatevisit extends AppCompatActivity {
     private EditText name;
     private EditText medical;
     private EditText add;
     private EditText phone;
     private EditText age;
     private EditText cost;
+    private FirebaseFirestore db;
+    private product p;
     Button save;
     RadioGroup gender;
     EditText date;
     DatePickerDialog datePickerDialog;
-
-    String userID;
-    FirebaseAuth auth;
-    private FirebaseFirestore db;
     RadioButton maleRadioButton, femaleRadioButton;
+    FirebaseAuth auth;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        auth = FirebaseAuth.getInstance();
+        userID = auth.getCurrentUser().getUid();
+        db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addvisit);
-
-        db=FirebaseFirestore.getInstance();
-        auth=FirebaseAuth.getInstance();
-        name=findViewById(R.id.p_name);
-        add=findViewById(R.id.p_add);
-        age=findViewById(R.id.p_age);
-        medical=findViewById(R.id.p_medical);
-        cost=findViewById(R.id.cst);
-        gender=findViewById(R.id.radioGroup);
-        phone=findViewById(R.id.p_phn);
-
-        save=findViewById(R.id.p_save);
+        setContentView(R.layout.activity_updatevisit);
+        name=findViewById(R.id.p_name2);
+        add=findViewById(R.id.p_add2);
+        age=findViewById(R.id.p_age2);
+        medical=findViewById(R.id.p_medical2);
+        cost=findViewById(R.id.cst2);
+        gender=findViewById(R.id.radioGroup2);
+        phone=findViewById(R.id.p_phn2);
+        save=findViewById(R.id.p_save2);
         final Boolean[] isDateChanged = {false};
+        p = (product) getIntent().getSerializableExtra("product");
+        name.setText(p.getName());
+        age.setText(p.getAge());
+        cost.setText(p.getCost());
+        phone.setText(p.getPhone_no());
+        add.setText(p.getAddress());
+        medical.setText(p.getMedical_description());
+        maleRadioButton=(RadioButton)findViewById(R.id.radioButton32);
+        femaleRadioButton=(RadioButton)findViewById(R.id.radioButton42);
 
-        maleRadioButton=(RadioButton)findViewById(R.id.radioButton3);
-        femaleRadioButton=(RadioButton)findViewById(R.id.radioButton4);
-
-        date = (EditText) findViewById(R.id.date);
-        // perform click event on edit text
+        date = (EditText) findViewById(R.id.date2);
+        date.setText(p.getStarting_date());
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +77,7 @@ public class addVisit extends AppCompatActivity {
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
                 isDateChanged[0] =true;
-
-                datePickerDialog = new DatePickerDialog(addVisit.this,
+                datePickerDialog = new DatePickerDialog(Updatevisit.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
@@ -95,11 +86,8 @@ public class addVisit extends AppCompatActivity {
                                 // set day of month , month and year value in the edit text
                                 date.setText(dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + year);
-
-
                             }
                         }, mYear, mMonth, mDay);
-
                 datePickerDialog.show();
             }
         });
@@ -151,7 +139,7 @@ public class addVisit extends AppCompatActivity {
                 else
                 {
                     userID=auth.getCurrentUser().getUid();
-                    DocumentReference dbProducts=db.collection(userID).document();
+                    DocumentReference dbProducts=db.collection(userID).document(p.getId());
                     Map<String,Object> user=new HashMap<>();
                     user.put("name",nm);
                     user.put("medical_description",med);
@@ -166,8 +154,6 @@ public class addVisit extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d("","Patient details has been added!!"+userID);
-                            Intent intent=new Intent(addVisit.this,HomeActivity.class);
-                           startActivity(intent);
                         }
                     });
 //                    patient patient=new patient(
