@@ -5,34 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".MainActivity"
+    tools:context=".HomeActivity"
     android:orientation="horizontal">
-    
 
 
     <!--<Button-->
-        <!--android:id="@+id/logout"-->
-        <!--android:layout_width="227dp"-->
-        <!--android:layout_height="64dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="158dp"-->
-        <!--android:background="@drawable/rounded_button"-->
-        <!--android:text="Logout"-->
-        <!--android:textColor="#DAD9D9"-->
-        <!--android:textSize="16dp" />-->
+    <!--android:id="@+id/logout"-->
+    <!--android:layout_width="227dp"-->
+    <!--android:layout_height="64dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginBottom="158dp"-->
+    <!--android:background="@drawable/rounded_button"-->
+    <!--android:text="Logout"-->
+    <!--android:textColor="#DAD9D9"-->
+    <!--android:textSize="16dp" />-->
 
     <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--android:id="@+id/add"-->
-        <!--android:layout_width="132dp"-->
-        <!--android:layout_height="122dp"-->
-        <!--android:foregroundGravity="right|bottom"-->
-        <!--app:backgroundTint="@color/colorPrimary"-->
-        <!--app:elevation="6dp"-->
-        <!--app:fabSize="normal"-->
+    <!--android:id="@+id/add"-->
+    <!--android:layout_width="132dp"-->
+    <!--android:layout_height="122dp"-->
+    <!--android:foregroundGravity="right|bottom"-->
+    <!--app:backgroundTint="@color/colorPrimary"-->
+    <!--app:elevation="6dp"-->
+    <!--app:fabSize="normal"-->
 
 
-        <!--/>-->
+    <!--/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+         />
+
     <Button
         android:id="@+id/add"
         android:layout_width="80dp"
@@ -45,7 +52,7 @@
         android:text="+"
         android:textSize="50dp"
         android:textColor="#ffffff"
-         />
+        />
 
 
 </RelativeLayout>

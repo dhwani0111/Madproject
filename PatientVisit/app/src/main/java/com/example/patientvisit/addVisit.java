@@ -147,23 +147,25 @@ public class addVisit extends AppCompatActivity {
 
                 }
                 else
-                 {
+                {
                     userID=auth.getCurrentUser().getUid();
                     DocumentReference dbProducts=db.collection(userID).document();
                     Map<String,Object> user=new HashMap<>();
                     user.put("name",nm);
-                    user.put("medical description",med);
+                    user.put("medical_description",med);
                     user.put("address",ad);
-                    user.put("phone no",phn);
+                    user.put("phone_no",phn);
                     user.put("cost",cst);
                     user.put("age",ag);
-                    user.put("Starting date",dt);
-                    user.put("Gender", g );
+                    user.put("starting_date",dt);
+                    user.put("gender", g );
 
                     dbProducts.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d("","Patient details has been added!!"+userID);
+                            Intent intent=new Intent(addVisit.this,HomeActivity.class);
+                           startActivity(intent);
                         }
                     });
 //                    patient patient=new patient(
