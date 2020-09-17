@@ -167,7 +167,8 @@ public class addVisit extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             Log.d("","Patient details has been added!!"+userID);
                             Intent intent=new Intent(addVisit.this,HomeActivity.class);
-                           startActivity(intent);
+
+                           finish();
                         }
                     });
 //                    patient patient=new patient(
