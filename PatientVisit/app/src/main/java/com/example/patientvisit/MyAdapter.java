@@ -1,6 +1,7 @@
 package com.example.patientvisit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return listItems.size();
     }
 
-    public class ViewHolder extends  RecyclerView.ViewHolder {
+    public class ViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textViewname,textViewage,textViewdate,textViewphone,textViewcharge;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,7 +52,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             textViewdate = itemView.findViewById(R.id.textview_desc);
             textViewphone = itemView.findViewById(R.id.textview_price);
             textViewcharge = itemView.findViewById(R.id.textview_quantity);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            product p = listItems.get(getAdapterPosition());
+            Intent intent = new Intent(context,Updatevisit.class);
+            intent.putExtra("product",p);
+            context.startActivity(intent);
         }
     }
-
 }

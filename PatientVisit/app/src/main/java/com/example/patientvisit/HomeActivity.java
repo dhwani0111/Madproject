@@ -62,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
                                 product pd = d.toObject(product.class);
+                                pd.setId(d.getId());
                                 p.add(pd);
                             }
                             adapter.notifyDataSetChanged();
