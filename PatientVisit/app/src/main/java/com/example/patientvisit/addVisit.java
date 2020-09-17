@@ -147,7 +147,7 @@ public class addVisit extends AppCompatActivity {
 
                 }
                 else
-                 {
+                {
                     userID=auth.getCurrentUser().getUid();
                     DocumentReference dbProducts=db.collection(userID).document();
                     Map<String,Object> user=new HashMap<>();
@@ -164,6 +164,8 @@ public class addVisit extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d("","Patient details has been added!!"+userID);
+                            Intent intent=new Intent(addVisit.this,HomeActivity.class);
+                           startActivity(intent);
                         }
                     });
 //                    patient patient=new patient(
