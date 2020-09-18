@@ -1,8 +1,13 @@
 package com.example.patientvisit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +16,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,9 +36,10 @@ public class Updatevisit extends AppCompatActivity {
     private EditText phone;
     private EditText age;
     private EditText cost;
+    Context context;
     private FirebaseFirestore db;
     private product p;
-    Button save;
+    Button save,delete;
     RadioGroup gender;
     EditText date;
     DatePickerDialog datePickerDialog;
@@ -42,9 +51,12 @@ public class Updatevisit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         auth = FirebaseAuth.getInstance();
         userID = auth.getCurrentUser().getUid();
+
+
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updatevisit);
+        delete = findViewById(R.id.delete);
         name=findViewById(R.id.p_name2);
         add=findViewById(R.id.p_add2);
         age=findViewById(R.id.p_age2);
@@ -63,7 +75,21 @@ public class Updatevisit extends AppCompatActivity {
         medical.setText(p.getMedical_description());
         maleRadioButton=(RadioButton)findViewById(R.id.radioButton32);
         femaleRadioButton=(RadioButton)findViewById(R.id.radioButton42);
-
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.collection(userID).document(p.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Toast.makeText(Updatevisit.this,"Visit Deleted",Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(Updatevisit.this,HomeActivity.class));
+                        }
+                    }
+                });
+            }
+        });
         date = (EditText) findViewById(R.id.date2);
         date.setText(p.getStarting_date());
         date.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +117,7 @@ public class Updatevisit extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
