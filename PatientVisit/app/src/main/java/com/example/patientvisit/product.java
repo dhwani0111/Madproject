@@ -1,20 +1,38 @@
 package com.example.patientvisit;
 
-public class product {
-    String address,age,cost,gender,medical_description,name,phone_no,starting_date;
+import com.google.firebase.database.Exclude;
 
-    public product() {
+import java.io.Serializable;
+
+public class product implements Serializable {
+    @Exclude private String id;
+    String address,age,gender,medical_description,name,phone_no,starting_date,date;
+    String cost,total_amount;
+
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public product(String address, String age, String cost, String gender, String medical_description, String name, String phone_no, String starting_date) {
+    public String getId() {
+        return id;
+    }
+
+    public product() {
+
+    }
+
+    public product(String id, String address, String age, String gender, String medical_description, String name, String phone_no, String starting_date, String date, String cost, String total_amount) {
+        this.id = id;
         this.address = address;
         this.age = age;
-        this.cost = cost;
         this.gender = gender;
         this.medical_description = medical_description;
         this.name = name;
         this.phone_no = phone_no;
         this.starting_date = starting_date;
+        this.date = date;
+        this.cost = cost;
+        this.total_amount = total_amount;
     }
 
     public String getAddress() {
@@ -23,10 +41,6 @@ public class product {
 
     public String getAge() {
         return age;
-    }
-
-    public String getCost() {
-        return cost;
     }
 
     public String getGender() {
@@ -47,5 +61,17 @@ public class product {
 
     public String getStarting_date() {
         return starting_date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public String getTotal_amount() {
+        return total_amount;
     }
 }

@@ -82,6 +82,7 @@ public class HomeActivity extends AppCompatActivity {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
                                 product pd = d.toObject(product.class);
+                                pd.setId(d.getId());
                                 p.add(pd);
                             }
                             adapter.notifyDataSetChanged();
@@ -95,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, addVisit.class);
                 startActivity(intent);
+                finish();
             }
         });
 
