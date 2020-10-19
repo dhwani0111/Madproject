@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="@drawable/bg"
     android:gravity="center"
     tools:context=".Updatevisit">
 
@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-condensed"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="50dp"
         android:text="Update Visit"
@@ -35,6 +36,7 @@
         android:layout_marginBottom="10dp"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:ems="10"
+        android:fontFamily="sans-serif-condensed"
         android:hint="Patient Name"
         android:inputType="textPersonName"
         android:textColor="#000000"
@@ -51,12 +53,14 @@
         android:layout_width="254dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+
         android:drawableLeft="@drawable/ic_description_black_24dp"
         android:ems="10"
         android:hint="Medical Description"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:fontFamily="sans-serif-condensed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
@@ -69,6 +73,7 @@
         android:layout_width="254dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-condensed"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
         android:ems="10"
         android:hint="Address"
@@ -99,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender: "
-
+            android:fontFamily="sans-serif-condensed"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -111,6 +116,7 @@
             android:checked="true"
             android:text="Male"
             android:textColor="#000000"
+            android:fontFamily="sans-serif-condensed"
 
             />
 
@@ -121,6 +127,7 @@
             android:layout_weight="1"
             android:checked="false"
             android:text="Female"
+            android:fontFamily="sans-serif-condensed"
             android:textColor="#000000" />
     </RadioGroup>
 
@@ -140,6 +147,7 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="sans-serif-condensed"
         app:layout_constraintVertical_bias="0.518" />
 
     <EditText
@@ -150,6 +158,7 @@
         android:drawableLeft="@drawable/ic_accessibility_black_24dp"
         android:ems="10"
         android:hint="Age"
+        android:fontFamily="sans-serif-condensed"
         android:inputType="number"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -170,6 +179,7 @@
         android:hint="Cost (per hour)"
         android:inputType="number"
         android:textColor="#000000"
+        android:fontFamily="sans-serif-condensed"
         android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -222,6 +232,7 @@
         android:hint="Starting Date..."
         android:padding="15dp"
         android:textColor="#000000"
+        android:fontFamily="sans-serif-condensed"
         android:textColorHint="#000000"
         android:textSize="20sp"
         />
@@ -235,7 +246,7 @@
         android:background="@drawable/rounded_button"
 
         android:text="Update"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textCursorDrawable="@drawable/rounded_button"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg"
     tools:context=".visitDate">
 
 
@@ -13,23 +15,24 @@
         android:layout_width="254dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="1dp"
         android:drawableLeft="@drawable/ic_date_range_black_24dp"
-        android:hint="Starting Date..."
-        android:padding="15dp"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="Visit Date..."
+        android:padding="10dp"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/add_date"
         android:layout_width="212dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rounded_button"
 
         android:text="Save"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textCursorDrawable="@drawable/rounded_button"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,35 +42,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="279dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="50dp"
-        android:text="Total amount"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/amount"
-        android:layout_width="254dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:padding="15dp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="20sp"
-        />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:text="Total amount"
+            android:fontFamily="sans-serif-condensed"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.467"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06" />
+
+        <EditText
+            android:id="@+id/amount"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

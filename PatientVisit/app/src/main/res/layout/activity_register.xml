@@ -15,7 +15,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:text="Register"
-        android:textColor="#DAD9D9"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="#000000"
         android:textSize="50dp" />
 
     <EditText
@@ -28,6 +29,7 @@
         android:drawableLeft="@drawable/ic_email_black_24dp"
         android:ems="10"
         android:hint=" Email"
+        android:fontFamily="sans-serif-condensed"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -46,6 +48,7 @@
         android:inputType="textPassword"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:fontFamily="sans-serif-condensed"
         android:textSize="16dp" />
 
     <Button
